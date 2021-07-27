@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useState ,useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import Header from './Header'
 import Menu from './Menu'
+import Category from './Category'
+import Footer from './Footer'
 
 import { fetchLifts } from '../actions'
 
 function App (props) {
+  const [category, setCategory] = useState('menu')
   useEffect(() => {
     props.dispatch(fetchLifts())
   }, [])
@@ -14,9 +17,15 @@ function App (props) {
   return (
     <>
       <div className='app'>
-        <div className="container vh-100 vw-100">
-          <Header />
-          <Menu />
+        <div className="container vh-100">
+          <Header setCategory={setCategory}/>
+          {category === 'menu' &&
+            <Menu setCategory={setCategory}/>
+          }
+          {category !== 'menu' &&
+            <Category category={category}/>
+          }
+          <Footer />
         </div>
       </div>
     </>
