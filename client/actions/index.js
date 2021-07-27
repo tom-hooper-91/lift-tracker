@@ -1,19 +1,23 @@
-import { getFruits } from '../apis/fruits'
+import { getLifts } from '../apis/lifts'
 
-export const SET_FRUITS = 'SET_FRUITS'
+export const SET_LIFTS = 'SET_LIFTS'
 
-export function setFruits (fruits) {
+// Action Creators
+
+export const setLifts = (lifts) => {
   return {
-    type: SET_FRUITS,
-    fruits
+    type: SET_LIFTS,
+    lifts
   }
 }
 
-export function fetchFruits () {
+// Thunks
+
+export const fetchLifts = () => {
   return dispatch => {
-    return getFruits()
-      .then(fruits => {
-        dispatch(setFruits(fruits))
+    return getLifts()
+      .then(lifts => {
+        dispatch(setLifts(lifts))
         return null
       })
   }
