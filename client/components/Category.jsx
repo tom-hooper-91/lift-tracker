@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react'
 
 import { connect } from 'react-redux'
 
+import RecentLifts from './RecentLifts'
+import AddLift from './AddLift'
+
 const Category = ({ lifts, category }) => {
   const [liftsByCat, setLiftsByCat] = useState([])
   const setHeading = () => {
     switch (category) {
       case 'chest':
-        return 'Chest and Triceps'
+        return 'Chest and Biceps'
       case 'back':
         return 'Back'
       case 'shoulders':
@@ -45,15 +48,8 @@ const Category = ({ lifts, category }) => {
           <h1>{setHeading()}</h1>
         </div>
       </div>
-      <div className="row">
-        <div className="col-6">
-          <ul>
-            {liftsByCat.map(l => {
-              return <li key={l.id}>{l.exercise}</li>
-            })}
-          </ul>
-        </div>
-      </div>
+      <RecentLifts liftsByCat={liftsByCat} />
+      <AddLift liftsByCat={liftsByCat} />
     </>
   )
 }
