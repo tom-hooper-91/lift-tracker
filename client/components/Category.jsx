@@ -7,6 +7,8 @@ import AddLift from './AddLift'
 
 const Category = ({ lifts, category }) => {
   const [liftsByCat, setLiftsByCat] = useState([])
+  const [exercises, setExercises] = useState([])
+
   const setHeading = () => {
     switch (category) {
       case 'chest':
@@ -41,6 +43,16 @@ const Category = ({ lifts, category }) => {
     }
   }, [])
 
+  useEffect(() => { // create new array of exercises only and assign to local state
+    const arr = []
+    if (liftsByCat.length > 0) {
+      liftsByCat.forEach(lift => {
+        if (!arr.includes(lift.exercise)) arr.push(lift.exercise)
+      })
+      setExercises(arr)
+    }
+  }, [liftsByCat])
+
   return (
     <>
       <div className="row">
@@ -49,7 +61,7 @@ const Category = ({ lifts, category }) => {
         </div>
       </div>
       <RecentLifts liftsByCat={liftsByCat} />
-      <AddLift liftsByCat={liftsByCat} />
+      <AddLift liftsByCat={liftsByCat} exercises={exercises}/>
     </>
   )
 }

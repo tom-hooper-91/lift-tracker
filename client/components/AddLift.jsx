@@ -1,17 +1,26 @@
 import React from 'react'
 
-const AddLift = ({ liftsByCat }) => {
+// const displayExercises = (lifts) => {
+//   let exercises = []
+//   lifts.forEach(lift => {
+//     if (exercises.includes(lift.exercise)) exercises.push(lift.exercise)
+//   })
+//   console.log(exercises)
+// }
+
+const AddLift = ({ liftsByCat, exercises }) => {
   // need to make array of all exercises displayed properly and without double ups for drop down
   // will also need to make a seperate form to add a new exercise on another page
+
   return (
     <>
       <form action='submit' className='row gy-2 gx-3 align-items-center'>
         <div className="col-auto">
           <label className="visually-hidden" htmlFor="autoSizingSelect">Exercise</label>
           <select className="form-select" id="autoSizingSelect">
-            <option selected>Choose...</option>
-            {liftsByCat.map(l => {
-              return <option value={l.exercise} key={l.id}>{l.exercise}</option>
+            <option>Choose...</option>
+            {exercises.map(e => {
+              return <option value={e} key={e}>{e}</option>
             })}
           </select>
         </div>
