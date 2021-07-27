@@ -8,7 +8,7 @@ import React from 'react'
 //   console.log(exercises)
 // }
 
-const AddLift = ({ liftsByCat, exercises }) => {
+const AddLift = ({ exercises, displayExercise }) => {
   // need to make array of all exercises displayed properly and without double ups for drop down
   // will also need to make a seperate form to add a new exercise on another page
 
@@ -20,7 +20,7 @@ const AddLift = ({ liftsByCat, exercises }) => {
           <select className="form-select" id="autoSizingSelect">
             <option>Choose...</option>
             {exercises.map(e => {
-              return <option value={e} key={e}>{e}</option>
+              return <option value={e} key={e}>{displayExercise(e)}</option>
             })}
           </select>
         </div>

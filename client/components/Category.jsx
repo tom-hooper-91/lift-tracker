@@ -5,6 +5,19 @@ import { connect } from 'react-redux'
 import RecentLifts from './RecentLifts'
 import AddLift from './AddLift'
 
+const capitalize = (word) => { // capitalize first letter of word
+  return word
+    .toLowerCase()
+    .replace(/\w/, firstLetter => firstLetter.toUpperCase())
+}
+
+const displayExercise = (str) => { // convert snake case to displayable string form
+  let words = []
+  words = str.split('_')
+  words = words.map(word => capitalize(word))
+  return words.join(' ')
+}
+
 const Category = ({ lifts, category }) => {
   const [liftsByCat, setLiftsByCat] = useState([])
   const [exercises, setExercises] = useState([])
@@ -60,8 +73,8 @@ const Category = ({ lifts, category }) => {
           <h1>{setHeading()}</h1>
         </div>
       </div>
-      <RecentLifts liftsByCat={liftsByCat} />
-      <AddLift liftsByCat={liftsByCat} exercises={exercises}/>
+      <RecentLifts liftsByCat={liftsByCat} displayExercise={displayExercise}/>
+      <AddLift liftsByCat={liftsByCat} exercises={exercises} displayExercise={displayExercise}/>
     </>
   )
 }
