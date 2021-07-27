@@ -8,9 +8,23 @@ import Footer from './Footer'
 
 import { fetchLifts } from '../actions'
 
+const capitalize = (word) => { // capitalize first letter of word
+  return word
+    .toLowerCase()
+    .replace(/\w/, firstLetter => firstLetter.toUpperCase())
+}
+
+const displayExercise = (str) => { // convert snake case to displayable string form
+  let words = []
+  words = str.split('_')
+  words = words.map(word => capitalize(word))
+  return words.join(' ')
+}
+
 function App (props) {
-  const [category, setCategory] = useState('menu')
-  useEffect(() => {
+  const [category, setCategory] = useState('menu') // state for conditionally renderring components
+
+  useEffect(() => { // update store with info from db
     props.dispatch(fetchLifts())
   }, [])
 
@@ -23,7 +37,7 @@ function App (props) {
             <Menu setCategory={setCategory}/>
           }
           {category !== 'menu' &&
-            <Category category={category}/>
+            <Category category={category} displayExercise={displayExercise}/>
           }
           <Footer />
         </div>

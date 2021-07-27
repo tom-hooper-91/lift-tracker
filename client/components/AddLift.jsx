@@ -1,41 +1,46 @@
-import React from 'react'
-
-// const displayExercises = (lifts) => {
-//   let exercises = []
-//   lifts.forEach(lift => {
-//     if (exercises.includes(lift.exercise)) exercises.push(lift.exercise)
-//   })
-//   console.log(exercises)
-// }
+import React, { useState } from 'react'
 
 const AddLift = ({ exercises, displayExercise }) => {
-  // need to make array of all exercises displayed properly and without double ups for drop down
-  // will also need to make a seperate form to add a new exercise on another page
+  const [formData, setFormData] = useState({
+    exercise: '',
+    weight: 0,
+    reps: 0
+  })
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
 
+  const handeChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
   return (
     <>
-      <form action='submit' className='row gy-2 gx-3 align-items-center'>
-        <div className="col-auto">
-          <label className="visually-hidden" htmlFor="autoSizingSelect">Exercise</label>
-          <select className="form-select" id="autoSizingSelect">
-            <option>Choose...</option>
-            {exercises.map(e => {
-              return <option value={e} key={e}>{displayExercise(e)}</option>
-            })}
-          </select>
+      <div className="row">
+        <div className="col-12 text-center">
+          <form action='submit' className='row gy-2 gx-3 align-items-center' onSubmit={(e) => handleSubmit(e)}>
+            <div className="col-auto">
+              <label className="visually-hidden" htmlFor="autoSizingSelect">Exercise</label>
+              <select name='exercise' className="form-select" id="autoSizingSelect" value={formData.exercise} onChange={(e) => handeChange(e)}>
+                <option>Choose...</option>
+                {exercises.map(e => {
+                  return <option key={e} value={e}>{displayExercise(e)}</option>
+                })}
+              </select>
+            </div>
+            <div className="col-auto">
+              <label className="visually-hidden" htmlFor="autoSizingInput">Weight</label>
+              <input name='weight' type="number" className="form-control" id="autoSizingInput" placeholder="Weight" value={formData.weight} onChange={(e) => handeChange(e)}/>
+            </div>
+            <div className="col-auto">
+              <label className="visually-hidden" htmlFor="autoSizingInput">Reps</label>
+              <input name='reps' type="number" className="form-control" id="autoSizingInput" placeholder="Reps" value={formData.reps} onChange={(e) => handeChange(e)}/>
+            </div>
+            <div className="col-auto">
+              <button type="submit" className="btn btn-primary">Submit</button>
+            </div>
+          </form>
         </div>
-        <div className="col-auto">
-          <label className="visually-hidden" htmlFor="autoSizingInput">Weight</label>
-          <input type="number" className="form-control" id="autoSizingInput" placeholder="Weight" />
-        </div>
-        <div className="col-auto">
-          <label className="visually-hidden" htmlFor="autoSizingInput">Reps</label>
-          <input type="number" className="form-control" id="autoSizingInput" placeholder="Reps" />
-        </div>
-        <div className="col-auto">
-          <button type="submit" className="btn btn-primary">Submit</button>
-        </div>
-      </form>
+      </div>
     </>
   )
 }

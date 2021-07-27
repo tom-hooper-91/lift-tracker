@@ -5,20 +5,7 @@ import { connect } from 'react-redux'
 import RecentLifts from './RecentLifts'
 import AddLift from './AddLift'
 
-const capitalize = (word) => { // capitalize first letter of word
-  return word
-    .toLowerCase()
-    .replace(/\w/, firstLetter => firstLetter.toUpperCase())
-}
-
-const displayExercise = (str) => { // convert snake case to displayable string form
-  let words = []
-  words = str.split('_')
-  words = words.map(word => capitalize(word))
-  return words.join(' ')
-}
-
-const Category = ({ lifts, category }) => {
+const Category = ({ lifts, category, displayExercise }) => {
   const [liftsByCat, setLiftsByCat] = useState([])
   const [exercises, setExercises] = useState([])
 
@@ -37,7 +24,7 @@ const Category = ({ lifts, category }) => {
     }
   }
 
-  useEffect(() => {
+  useEffect(() => { // use menu state to update local state of lifts to match assigned category
     switch (category) {
       case 'chest':
         setLiftsByCat(lifts.filter(l => l.category === category || l.category === 'biceps'))
@@ -56,9 +43,9 @@ const Category = ({ lifts, category }) => {
     }
   }, [])
 
-  useEffect(() => { // create new array of exercises only and assign to local state
+  useEffect(() => { // create new array of exercises without double ups and assign to local state
     const arr = []
-    if (liftsByCat.length > 0) {
+    if (liftsByCat.length > 0) { // prevents running on component render
       liftsByCat.forEach(lift => {
         if (!arr.includes(lift.exercise)) arr.push(lift.exercise)
       })
