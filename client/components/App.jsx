@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
+import Header from './Header'
+import Menu from './Menu'
+
 import { fetchLifts } from '../actions'
 
 function App (props) {
@@ -11,12 +14,10 @@ function App (props) {
   return (
     <>
       <div className='app'>
-        <h1>Fullstack Boilerplate - with Lifts!</h1>
-        <ul>
-          {props.lifts.map(lift => {
-            return <li key={lift.id}>{lift.exercise}</li>
-          })}
-        </ul>
+        <div className="container vh-100 vw-100">
+          <Header />
+          <Menu />
+        </div>
       </div>
     </>
   )
