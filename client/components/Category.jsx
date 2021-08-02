@@ -60,7 +60,7 @@ const Category = ({ lifts, category, displayExercise }) => {
           <h1>{setHeading()}</h1>
         </div>
       </div>
-      <RecentLifts liftsByCat={liftsByCat} displayExercise={displayExercise}/>
+      <RecentLifts displayExercise={displayExercise} category={category}/>
       <AddLift exercises={exercises} displayExercise={displayExercise}/>
     </>
   )
