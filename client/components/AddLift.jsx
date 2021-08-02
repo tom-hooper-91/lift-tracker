@@ -1,18 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-const AddLift = ({ exercises, displayExercise }) => {
+import { connect } from 'react-redux'
+
+import { addNewLift } from '../actions'
+
+const AddLift = ({ exercises, displayExercise, dispatch, lifts }) => {
   const [formData, setFormData] = useState({
     exercise: '',
+    category: '',
     weight: 0,
     reps: 0
   })
   const handleSubmit = (e) => {
     e.preventDefault()
+    const existinglift = lifts.find(lift => lift.exercise === formData.exercise)
+    setFormData({ ...formData, category: existinglift.category }) // logic to add category to form data
   }
 
   const handeChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
+
+  useEffect(() => {
+    if (formData.category.length > 0) {
+      dispatch(addNewLift(formData))
+      setFormData({
+        exercise: '',
+        category: '',
+        weight: 0,
+        reps: 0
+      })
+    }
+  }, [handleSubmit])
+
   return (
     <>
       <div className="row">
@@ -45,4 +65,10 @@ const AddLift = ({ exercises, displayExercise }) => {
   )
 }
 
-export default AddLift
+const mapStateToProps = (globalState) => {
+  return {
+    lifts: globalState.lifts
+  }
+}
+
+export default connect(mapStateToProps)(AddLift)

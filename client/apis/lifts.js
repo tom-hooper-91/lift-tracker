@@ -8,3 +8,10 @@ export const getLifts = () => {
       return res.body
     })
 }
+
+export const addLift = (lift) => {
+  return request.post(rootUrl + '/lifts/add')
+    .send(lift)
+    .then(res => res.body)
+    .catch(err => console.log(err))
+}

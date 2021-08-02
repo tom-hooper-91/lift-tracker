@@ -1,6 +1,6 @@
 import React from 'react'
 
-const lastFive = (arr) => {
+const lastFive = (arr) => { // displays last 5 entries in array
   return arr.slice(Math.max(arr.length - 5, 1))
 }
 

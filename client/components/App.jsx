@@ -45,6 +45,7 @@ function App (props) {
     </>
   )
 }
+
 const mapStateToProps = (globalState) => {
   return {
     lifts: globalState.lifts

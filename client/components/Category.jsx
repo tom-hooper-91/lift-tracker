@@ -61,7 +61,7 @@ const Category = ({ lifts, category, displayExercise }) => {
         </div>
       </div>
       <RecentLifts liftsByCat={liftsByCat} displayExercise={displayExercise}/>
-      <AddLift liftsByCat={liftsByCat} exercises={exercises} displayExercise={displayExercise}/>
+      <AddLift exercises={exercises} displayExercise={displayExercise}/>
     </>
   )
 }
