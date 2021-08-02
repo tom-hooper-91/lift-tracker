@@ -2,30 +2,9 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-const lastFive = (arr) => { // displays last 5 entries in array
-  return arr.slice(Math.max(arr.length - 5, 1))
-}
+import { displayExercise, lastFive, getLiftsByCat } from '../utils'
 
-const getLiftsByCat = (lifts, category) => { // sorts global store to only display relevant lifts based on category
-  switch (category) {
-    case 'chest':
-      return lifts.filter(l => l.category === category || l.category === 'biceps')
-
-    case 'back':
-      return lifts.filter(l => l.category === category)
-
-    case 'shoulders':
-      return lifts.filter(l => l.category === category || l.category === 'triceps')
-
-    case 'legs':
-      return lifts.filter(l => l.category === category)
-
-    default:
-      return ['error']
-  }
-}
-
-const RecentLifts = ({ displayExercise, lifts, category }) => {
+const RecentLifts = ({ lifts, category }) => {
   return (
     <>
       <div className="row">
