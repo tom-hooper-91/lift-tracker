@@ -65,16 +65,12 @@ export const getLiftsByCat = (lifts, category) => { // sorts global store to onl
 }
 
 export const sortExercises = (lifts, category, secondary) => { // create new array of exercises from globalState using category and without double ups
-  console.log('secondary is ====', secondary)
-  console.log('lifts is ====', lifts)
   const liftsByCat = lifts.filter(lift => {
     if (secondary) { // if secondary category exists return it along with category
       return lift.category === category || lift.category === secondary
     } else return lift.category === category
   }
   )
-
-  console.log('lifts by cat', liftsByCat)
 
   const exercisesByCat = liftsByCat.map(lift => lift.exercise)
 

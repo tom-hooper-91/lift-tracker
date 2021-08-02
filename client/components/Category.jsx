@@ -7,7 +7,7 @@ import AddLift from './AddLift'
 
 import { setHeading } from '../utils'
 
-const Category = ({ lifts, category }) => {
+const Category = ({ category }) => {
   return (
     <>
       <div className="row">
@@ -21,10 +21,4 @@ const Category = ({ lifts, category }) => {
   )
 }
 
-const mapStateToProps = (globalState) => {
-  return {
-    lifts: globalState.lifts
-  }
-}
-
-export default connect(mapStateToProps)(Category)
+export default connect()(Category)
