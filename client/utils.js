@@ -24,7 +24,22 @@ export const setHeading = (category) => { // displays correct heading based on c
     case 'shoulders':
       return 'Shoulders and Triceps'
     case 'legs':
-      return 'Legs and Triceps'
+      return 'Legs'
+    default:
+      return 'Error'
+  }
+}
+
+export const setSecondary = (category) => { // returns string of secondary category if applicable
+  switch (category) {
+    case 'chest':
+      return 'biceps'
+    case 'back':
+      return ''
+    case 'shoulders':
+      return 'triceps'
+    case 'legs':
+      return ''
     default:
       return 'Error'
   }
@@ -49,10 +64,17 @@ export const getLiftsByCat = (lifts, category) => { // sorts global store to onl
   }
 }
 
-// This needs logic to add biceps and triceps to category
+export const sortExercises = (lifts, category, secondary) => { // create new array of exercises from globalState using category and without double ups
+  console.log('secondary is ====', secondary)
+  console.log('lifts is ====', lifts)
+  const liftsByCat = lifts.filter(lift => {
+    if (secondary) { // if secondary category exists return it along with category
+      return lift.category === category || lift.category === secondary
+    } else return lift.category === category
+  }
+  )
 
-export const sortExercises = (lifts, category) => { // create new array of exercises from globalState using category and without double ups
-  const liftsByCat = lifts.filter(lift => lift.category === category)
+  console.log('lifts by cat', liftsByCat)
 
   const exercisesByCat = liftsByCat.map(lift => lift.exercise)
 

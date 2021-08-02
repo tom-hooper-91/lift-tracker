@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { addNewLift } from '../actions'
-import { displayExercise, sortExercises } from '../utils'
+import { displayExercise, sortExercises, setSecondary } from '../utils'
 
 const AddLift = ({ dispatch, lifts, category }) => {
   const [formData, setFormData] = useState({
@@ -43,7 +43,7 @@ const AddLift = ({ dispatch, lifts, category }) => {
               <label className="visually-hidden" htmlFor="autoSizingSelect">Exercise</label>
               <select name='exercise' className="form-select" id="autoSizingSelect" value={formData.exercise} onChange={(e) => handeChange(e)}>
                 <option>Choose...</option>
-                {sortExercises(lifts, category).map(e => {
+                {sortExercises(lifts, category, setSecondary(category)).map(e => {
                   return <option key={e} value={e}>{displayExercise(e)}</option>
                 })}
               </select>
