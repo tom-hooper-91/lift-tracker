@@ -5,7 +5,9 @@ import { connect } from 'react-redux'
 import RecentLifts from './RecentLifts'
 import AddLift from './AddLift'
 
-const Category = ({ lifts, category, displayExercise }) => {
+import { displayExercise } from '../utils'
+
+const Category = ({ lifts, category }) => {
   const [liftsByCat, setLiftsByCat] = useState([])
   const [exercises, setExercises] = useState([])
 

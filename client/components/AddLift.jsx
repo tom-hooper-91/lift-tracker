@@ -21,7 +21,7 @@ const AddLift = ({ exercises, displayExercise, dispatch, lifts }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  useEffect(() => {
+  useEffect(() => { // allows logic inside handleSubmit to complete
     if (formData.category.length > 0) {
       dispatch(addNewLift(formData))
       setFormData({
@@ -32,6 +32,10 @@ const AddLift = ({ exercises, displayExercise, dispatch, lifts }) => {
       })
     }
   }, [handleSubmit])
+
+  const setExercises = (lifts) => {
+    
+  }
 
   return (
     <>
