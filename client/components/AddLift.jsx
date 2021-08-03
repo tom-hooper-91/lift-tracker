@@ -51,11 +51,11 @@ const AddLift = ({ dispatch, lifts, category }) => {
             </div>
             <div className="col-auto">
               <label htmlFor="autoSizingInput">Weight</label>
-              <input name='weight' type="number" className="form-control" id="autoSizingInput" placeholder="Weight" value={formData.weight} onChange={(e) => handeChange(e)}/>
+              <input name='weight' type="number" className="form-control" id="autoSizingInput" value={formData.weight} onChange={(e) => handeChange(e)}/>
             </div>
             <div className="col-auto">
               <label htmlFor="autoSizingInput">Reps</label>
-              <input name='reps' type="number" className="form-control" id="autoSizingInput" placeholder="Reps" value={formData.reps} onChange={(e) => handeChange(e)}/>
+              <input name='reps' type="number" className="form-control" id="autoSizingInput" value={formData.reps} onChange={(e) => handeChange(e)}/>
             </div>
             <div className="col-auto">
               <button type="submit" className="btn btn-primary">Submit</button>
