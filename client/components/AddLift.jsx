@@ -38,6 +38,7 @@ const AddLift = ({ dispatch, lifts, category }) => {
     <>
       <div className="row">
         <div className="col-12 text-center">
+          <h4>Add Lift</h4>
           <form action='submit' className='row gy-2 gx-3 align-items-center' onSubmit={(e) => handleSubmit(e)}>
             <div className="col-auto">
               <label htmlFor="autoSizingSelect">Exercise</label>

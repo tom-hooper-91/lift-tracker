@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import RecentLifts from './RecentLifts'
 import AddLift from './AddLift'
+import AddExercise from './AddExercise'
 
 import { setHeading } from '../utils'
 
@@ -17,6 +18,7 @@ const Category = ({ category }) => {
       </div>
       <RecentLifts category={category}/>
       <AddLift category={category} />
+      <AddExercise category={category}/>
     </>
   )
 }
