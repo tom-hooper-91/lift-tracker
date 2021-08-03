@@ -40,7 +40,7 @@ const AddLift = ({ dispatch, lifts, category }) => {
         <div className="col-12 text-center">
           <form action='submit' className='row gy-2 gx-3 align-items-center' onSubmit={(e) => handleSubmit(e)}>
             <div className="col-auto">
-              <label className="visually-hidden" htmlFor="autoSizingSelect">Exercise</label>
+              <label htmlFor="autoSizingSelect">Exercise</label>
               <select name='exercise' className="form-select" id="autoSizingSelect" value={formData.exercise} onChange={(e) => handeChange(e)}>
                 <option>Choose...</option>
                 {sortExercises(lifts, category, setSecondary(category)).map(e => {
@@ -49,11 +49,11 @@ const AddLift = ({ dispatch, lifts, category }) => {
               </select>
             </div>
             <div className="col-auto">
-              <label className="visually-hidden" htmlFor="autoSizingInput">Weight</label>
+              <label htmlFor="autoSizingInput">Weight</label>
               <input name='weight' type="number" className="form-control" id="autoSizingInput" placeholder="Weight" value={formData.weight} onChange={(e) => handeChange(e)}/>
             </div>
             <div className="col-auto">
-              <label className="visually-hidden" htmlFor="autoSizingInput">Reps</label>
+              <label htmlFor="autoSizingInput">Reps</label>
               <input name='reps' type="number" className="form-control" id="autoSizingInput" placeholder="Reps" value={formData.reps} onChange={(e) => handeChange(e)}/>
             </div>
             <div className="col-auto">
