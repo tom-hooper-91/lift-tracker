@@ -33,29 +33,25 @@ const AddExercise = ({ category, dispatch }) => {
   }, [submit])
   return (
     <>
-      <div className="row">
-        <div className="col-12 text-center">
-          <h4>Add Exercise</h4>
-          <form action="submit" className='row gy-2 gx-3 align-items-center' onSubmit={(e) => handleSubmit(e)}>
-            <div className="col-auto">
-              <label htmlFor="autoSizingInput">Exercise</label>
-              <input name='exercise' type="text" className='form-control' id='autoSizingInput' placeholder='Exercise' value={formData.exercise} onChange={(e) => handleChange(e)}/>
-            </div>
-            <div className="col-auto">
-              <label htmlFor="autoSizingSelect">Category</label>
-              <select name="category" className='form-select' id="autoSizingSelect" value={formData.category} onChange={(e) => handleChange(e)}>
-                <option>Choose...</option>
-                <option value={category}>{capitalize(category)}</option>
-                {category === 'chest' ? <option value='biceps'>Biceps</option> : null}
-                {category === 'shoulders' ? <option value='triceps'>Triceps</option> : null}
-              </select>
-            </div>
-            <div className="col-auto">
-              <button type='submit' className='btn btn-primary'>Submit</button>
-            </div>
-          </form>
+      <h4 className='mt-4'>Add Exercise</h4>
+      <form action="submit" className='row gy-2 gx-3 align-items-center' onSubmit={(e) => handleSubmit(e)}>
+        <div className="col-auto">
+          <label htmlFor="autoSizingInput">Exercise</label>
+          <input name='exercise' type="text" className='form-control' id='autoSizingInput' placeholder='Exercise' value={formData.exercise} onChange={(e) => handleChange(e)}/>
         </div>
-      </div>
+        <div className="col-auto">
+          <label htmlFor="autoSizingSelect">Category</label>
+          <select name="category" className='form-select' id="autoSizingSelect" value={formData.category} onChange={(e) => handleChange(e)}>
+            <option>Choose...</option>
+            <option value={category}>{capitalize(category)}</option>
+            {category === 'chest' ? <option value='biceps'>Biceps</option> : null}
+            {category === 'shoulders' ? <option value='triceps'>Triceps</option> : null}
+          </select>
+        </div>
+        <div className="col-auto">
+          <button type='submit' className='btn btn-primary mt-4'>Submit</button>
+        </div>
+      </form>
     </>
   )
 }

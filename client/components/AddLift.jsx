@@ -36,33 +36,29 @@ const AddLift = ({ dispatch, lifts, category }) => {
 
   return (
     <>
-      <div className="row">
-        <div className="col-12 text-center">
-          <h4>Add Lift</h4>
-          <form action='submit' className='row gy-2 gx-3 align-items-center' onSubmit={(e) => handleSubmit(e)}>
-            <div className="col-auto">
-              <label htmlFor="autoSizingSelect">Exercise</label>
-              <select name='exercise' className="form-select" id="autoSizingSelect" value={formData.exercise} onChange={(e) => handeChange(e)}>
-                <option>Choose...</option>
-                {sortExercises(lifts, category, setSecondary(category)).map(e => {
-                  return <option key={e} value={e}>{displayExercise(e)}</option>
-                })}
-              </select>
-            </div>
-            <div className="col-auto">
-              <label htmlFor="autoSizingInput">Weight</label>
-              <input name='weight' type="number" className="form-control" id="autoSizingInput" value={formData.weight} onChange={(e) => handeChange(e)}/>
-            </div>
-            <div className="col-auto">
-              <label htmlFor="autoSizingInput">Reps</label>
-              <input name='reps' type="number" className="form-control" id="autoSizingInput" value={formData.reps} onChange={(e) => handeChange(e)}/>
-            </div>
-            <div className="col-auto">
-              <button type="submit" className="btn btn-primary">Submit</button>
-            </div>
-          </form>
+      <h4>Add Lift</h4>
+      <form action='submit' className='row gy-2 gx-3 align-items-center' onSubmit={(e) => handleSubmit(e)}>
+        <div className="col-auto">
+          <label htmlFor="autoSizingSelect">Exercise</label>
+          <select name='exercise' className="form-select" id="autoSizingSelect" value={formData.exercise} onChange={(e) => handeChange(e)}>
+            <option>Choose...</option>
+            {sortExercises(lifts, category, setSecondary(category)).map(e => {
+              return <option key={e} value={e}>{displayExercise(e)}</option>
+            })}
+          </select>
         </div>
-      </div>
+        <div className="col-auto">
+          <label htmlFor="autoSizingInput">Weight</label>
+          <input name='weight' type="number" className="form-control" id="autoSizingInput" value={formData.weight} onChange={(e) => handeChange(e)}/>
+        </div>
+        <div className="col-auto">
+          <label htmlFor="autoSizingInput">Reps</label>
+          <input name='reps' type="number" className="form-control" id="autoSizingInput" value={formData.reps} onChange={(e) => handeChange(e)}/>
+        </div>
+        <div className="col-auto">
+          <button type="submit" className="btn btn-primary mt-4">Submit</button>
+        </div>
+      </form>
     </>
   )
 }
