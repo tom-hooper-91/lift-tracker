@@ -1,20 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { capitalize } from '../utils'
+import { capitalize, snakeCase } from '../utils'
 
+// need to use snakeCase func to convert exercise before thunk
 const AddExercise = ({ category }) => {
   const [formData, setFormData] = useState({
     exercise: '',
     category: ''
   })
+  const [submit, setSubmit] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setFormData({ ...formData, exercise: snakeCase(formData.exercise) }) // convert exercise to snake case
+    setSubmit(!submit) // change value of submit to trigger useEffect
   }
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
+
+  useEffect(() => {
+    console.log('triggering', formData)
+  }, [submit])
   return (
     <>
       <div className="row">

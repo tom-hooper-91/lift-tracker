@@ -4,6 +4,16 @@ export const capitalize = (word) => { // capitalize first letter of word
     .replace(/\w/, firstLetter => firstLetter.toUpperCase())
 }
 
+export const snakeCase = string => { // convert string to snake case
+  string = string.replace(/\W+/g, ' ').toLowerCase().split(' ').join('_')
+
+  if (string.charAt(string.length - 1) === '_') {
+    return string.substring(0, string.length - 1)
+  }
+
+  return string
+}
+
 export const lastFive = (arr) => { // displays last 5 entries in array
   return arr.slice(Math.max(arr.length - 5, 1))
 }
