@@ -16,22 +16,10 @@ function getAllLifts (db = connection) {
     .select()
 }
 
-function getLiftsByCat (cat, db = connection) {
-  return db('lifts')
-    .where('category', cat)
-    .select()
-}
-
 function getOneLift (id, db = connection) {
   return db('lifts')
     .where('id', id)
     .first()
-    .select()
-}
-
-function getLiftsByExercise (exercise, db = connection) {
-  return db('lifts')
-    .where('exercise', exercise)
     .select()
 }
 
@@ -54,9 +42,7 @@ function deleteLift (id, db = connection) {
 module.exports = {
   addLift,
   getAllLifts,
-  getLiftsByCat,
   getOneLift,
-  getLiftsByExercise,
   updateLift,
   deleteLift
 }

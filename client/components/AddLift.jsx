@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { addNewLift } from '../actions'
 import { displayExercise, sortExercises, setSecondary } from '../utils'
 
+// need to add date to lift
+
 const AddLift = ({ dispatch, lifts, category }) => {
   const [formData, setFormData] = useState({
     exercise: '',
@@ -12,15 +14,20 @@ const AddLift = ({ dispatch, lifts, category }) => {
     weight: 0,
     reps: 0
   })
+  const [submit, setSubmit] = useState(false)
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const existinglift = lifts.find(lift => lift.exercise === formData.exercise)
     setFormData({ ...formData, category: existinglift.category }) // logic to add category to form data
+    setSubmit(!submit)
   }
 
   const handeChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
+
+  // thunk happening on render, needs fixing
 
   useEffect(() => { // allows logic inside handleSubmit to complete
     if (formData.category.length > 0) {
@@ -32,7 +39,7 @@ const AddLift = ({ dispatch, lifts, category }) => {
         reps: 0
       })
     }
-  }, [handleSubmit])
+  }, [submit])
 
   return (
     <>

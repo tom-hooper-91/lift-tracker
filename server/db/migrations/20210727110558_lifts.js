@@ -5,6 +5,7 @@ exports.up = function (knex) {
     table.string('exercise')
     table.decimal('weight')
     table.integer('reps')
+    table.date('date')
   })
 }
 
