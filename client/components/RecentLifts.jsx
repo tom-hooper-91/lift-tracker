@@ -19,13 +19,13 @@ const RecentLifts = ({ lifts, category }) => {
             </thead>
             <tbody>
               {lastFive(getLiftsByCat(lifts, category).map(l => {
-                return (
-                  <tr key={l.id}>
+                return l.weight
+                  ? <tr key={l.id}>
                     <th scope='row'>{displayExercise(l.exercise)}</th>
                     <td>{l.weight}</td>
                     <td>{l.reps}</td>
                   </tr>
-                )
+                  : null
               }))}
             </tbody>
           </table>
