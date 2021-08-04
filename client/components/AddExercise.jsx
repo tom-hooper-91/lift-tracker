@@ -25,11 +25,13 @@ const AddExercise = ({ category, dispatch }) => {
   }
 
   useEffect(() => {
-    dispatch(addNewLift(formData))
-    setFormData({
-      exercise: '',
-      category: ''
-    })
+    if (formData.category.length > 0) {
+      dispatch(addNewLift(formData))
+      setFormData({
+        exercise: '',
+        category: ''
+      })
+    }
   }, [submit])
   return (
     <>
