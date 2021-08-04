@@ -15,6 +15,7 @@ const RecentLifts = ({ lifts, category }) => {
                 <th scope='col'>Exercise</th>
                 <th scope='col'>Weight</th>
                 <th scope='col'>Reps</th>
+                <th scope='col'>Date</th>
               </tr>
             </thead>
             <tbody>
@@ -24,6 +25,7 @@ const RecentLifts = ({ lifts, category }) => {
                     <th scope='row'>{displayExercise(l.exercise)}</th>
                     <td>{l.weight}</td>
                     <td>{l.reps}</td>
+                    <td>{l.date}</td>
                   </tr>
                   : null
               }))}
