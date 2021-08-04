@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
+import { connect } from 'react-redux'
+
+import { addNewLift } from '../actions'
+
 import { capitalize, snakeCase } from '../utils'
 
 // need to use snakeCase func to convert exercise before thunk
-const AddExercise = ({ category }) => {
+const AddExercise = ({ category, dispatch }) => {
   const [formData, setFormData] = useState({
     exercise: '',
     category: ''
@@ -21,7 +25,11 @@ const AddExercise = ({ category }) => {
   }
 
   useEffect(() => {
-    console.log('triggering', formData)
+    dispatch(addNewLift(formData))
+    setFormData({
+      exercise: '',
+      category: ''
+    })
   }, [submit])
   return (
     <>
@@ -52,4 +60,4 @@ const AddExercise = ({ category }) => {
   )
 }
 
-export default AddExercise
+export default connect()(AddExercise)
