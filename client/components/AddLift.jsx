@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { addNewLift } from '../actions'
-import { displayExercise, sortExercises, setSecondary } from '../utils'
+import { displayExercise, sortExercises, setSecondary, createSQLDate } from '../utils'
 
 // need to add date to lift
 
@@ -18,8 +18,14 @@ const AddLift = ({ dispatch, lifts, category }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    // logic to add category and date to form data
     const existinglift = lifts.find(lift => lift.exercise === formData.exercise)
-    setFormData({ ...formData, category: existinglift.category }) // logic to add category to form data
+
+    setFormData({ ...formData, category: existinglift.category, date: createSQLDate() })
+
+    // trigger useEffect
+
     setSubmit(!submit)
   }
 
@@ -27,16 +33,15 @@ const AddLift = ({ dispatch, lifts, category }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  // thunk happening on render, needs fixing
-
   useEffect(() => { // allows logic inside handleSubmit to complete
     if (formData.category.length > 0) {
       dispatch(addNewLift(formData))
       setFormData({
         exercise: '',
         category: '',
-        weight: 0,
-        reps: 0
+        weight: null,
+        reps: null,
+        date: null
       })
     }
   }, [submit])

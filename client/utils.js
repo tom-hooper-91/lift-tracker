@@ -18,6 +18,16 @@ export const lastFive = (arr) => { // displays last 5 entries in array
   return arr.slice(Math.max(arr.length - 5, 1))
 }
 
+export const pad = (num) => { return ('00' + num).slice(-2) }
+
+export const createSQLDate = () => {
+  let date = new Date()
+  date = date.getUTCFullYear() + '-' +
+      pad(date.getUTCMonth() + 1) + '-' +
+      pad(date.getUTCDate())
+  return date
+}
+
 export const displayExercise = (str) => { // convert snake case to displayable string form
   let words = []
   words = str.split('_')
