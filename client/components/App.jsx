@@ -1,30 +1,36 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchFruits } from '../actions'
+import Header from './Header'
+import Menu from './Menu'
+import Category from './Category'
+import Footer from './Footer'
 
-function App (props) {
-  useEffect(() => {
-    props.dispatch(fetchFruits())
+import { fetchLifts } from '../actions'
+
+function App ({ dispatch }) {
+  const [category, setCategory] = useState('menu') // state for conditionally renderring components
+
+  useEffect(() => { // update store with info from db
+    dispatch(fetchLifts())
   }, [])
 
   return (
     <>
       <div className='app'>
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>
-          {props.fruits.map(fruit => (
-            <li key={fruit}>{fruit}</li>
-          ))}
-        </ul>
+        <div className="container vh-100">
+          <Header setCategory={setCategory}/>
+          {category === 'menu' &&
+            <Menu setCategory={setCategory}/>
+          }
+          {category !== 'menu' &&
+            <Category category={category} />
+          }
+          <Footer />
+        </div>
       </div>
     </>
   )
 }
-const mapStateToProps = (globalState) => {
-  return {
-    fruits: globalState.fruits
-  }
-}
 
-export default connect(mapStateToProps)(App)
+export default connect()(App)
