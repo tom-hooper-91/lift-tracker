@@ -20,6 +20,7 @@ const RecentLifts = ({ lifts, category }) => {
             </thead>
             <tbody>
               {lastFive(getLiftsByCat(lifts, category).map(l => { // ternery to rule out newly added exercises with no info
+              // try a filter to rule out missing key error
                 return l.weight && l.reps
                   ? <tr key={l.id}>
                     <th scope='row'>{displayExercise(l.exercise)}</th>

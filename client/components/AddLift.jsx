@@ -39,9 +39,9 @@ const AddLift = ({ dispatch, lifts, category }) => {
       setFormData({
         exercise: '',
         category: '',
-        weight: null,
-        reps: null,
-        date: null
+        weight: 0,
+        reps: 0,
+        date: ''
       })
     }
   }, [submit])

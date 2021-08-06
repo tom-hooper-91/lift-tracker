@@ -4,12 +4,16 @@ import { connect } from 'react-redux'
 import Header from './Header'
 import Menu from './Menu'
 import Category from './Category'
+import LiftsByDate from './LiftsByDate'
 import Footer from './Footer'
 
 import { fetchLifts } from '../actions'
 
 function App ({ dispatch }) {
   const [category, setCategory] = useState('menu') // state for conditionally renderring components
+  const [date, setDate] = useState(null) // state for displaying lifts by date
+
+  const categoryArr = ['chest', 'back', 'legs', 'shoulders']
 
   useEffect(() => { // update store with info from db
     dispatch(fetchLifts())
@@ -23,8 +27,11 @@ function App ({ dispatch }) {
           {category === 'menu' &&
             <Menu setCategory={setCategory}/>
           }
-          {category !== 'menu' &&
-            <Category category={category} />
+          {categoryArr.includes(category) &&
+            <Category category={category} date={date}/>
+          }
+          {category === 'date' &&
+            <LiftsByDate date={date} />
           }
           <Footer />
         </div>
