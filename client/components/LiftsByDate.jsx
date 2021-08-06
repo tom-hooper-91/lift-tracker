@@ -1,9 +1,9 @@
 import React from 'react'
 
-const LiftsByDate = (props) => {
+const LiftsByDate = ({ date }) => {
   return (
     <>
-      <h1>Lifts By Date</h1>
+      <h1>{date}</h1>
     </>
   )
 }

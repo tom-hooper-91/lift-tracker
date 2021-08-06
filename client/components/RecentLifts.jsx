@@ -4,7 +4,11 @@ import { connect } from 'react-redux'
 
 import { displayExercise, lastFive, getLiftsByCat } from '../utils'
 
-const RecentLifts = ({ lifts, category }) => {
+const RecentLifts = ({ lifts, category, setCategory, setDate }) => {
+  const handleClick = (date) => {
+    setDate(date)
+    setCategory('date')
+  }
   return (
     <>
       <div className="row">
@@ -26,7 +30,7 @@ const RecentLifts = ({ lifts, category }) => {
                     <th scope='row'>{displayExercise(l.exercise)}</th>
                     <td>{l.weight}</td>
                     <td>{l.reps}</td>
-                    <td>{l.date}</td>
+                    <td onClick={() => handleClick(l.date)}>{l.date}</td>
                   </tr>
                   : null
               }))}

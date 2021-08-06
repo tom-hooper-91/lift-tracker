@@ -28,7 +28,7 @@ function App ({ dispatch }) {
             <Menu setCategory={setCategory}/>
           }
           {categoryArr.includes(category) &&
-            <Category category={category} date={date}/>
+            <Category category={category} setCategory={setCategory} setDate={setDate}/>
           }
           {category === 'date' &&
             <LiftsByDate date={date} />
