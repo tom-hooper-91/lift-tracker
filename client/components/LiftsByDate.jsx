@@ -19,7 +19,7 @@ const LiftsByDate = ({ date, lifts }) => {
               </tr>
             </thead>
             <tbody>
-              {lifts.filter(l => l.date === date).map(l => {
+              {lifts.filter(l => l.date === date).map(l => { // use date to filter down store and display lifts
                 return (
                   l.weight && l.reps
                     ? <tr key={l.id}>

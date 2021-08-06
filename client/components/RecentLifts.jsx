@@ -30,7 +30,7 @@ const RecentLifts = ({ lifts, category, setCategory, setDate }) => {
                     <th scope='row'>{displayExercise(l.exercise)}</th>
                     <td>{l.weight}</td>
                     <td>{l.reps}</td>
-                    <td onClick={() => handleClick(l.date)}>{l.date}</td>
+                    <td onClick={() => handleClick(l.date)} role='button'>{l.date}</td>
                   </tr>
                   : null
               }))}

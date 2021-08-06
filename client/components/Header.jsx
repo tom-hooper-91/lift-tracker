@@ -5,7 +5,7 @@ const Header = ({ setCategory }) => {
     <>
       <div className="row text-center bg-light mb-4">
         <div className="col-12 mt-2">
-          <h1 className='display-1' onClick={() => setCategory('menu')}>Lift Tracker</h1>
+          <h1 className='display-1' onClick={() => setCategory('menu')} role='button'>Lift Tracker</h1>
         </div>
       </div>
     </>
