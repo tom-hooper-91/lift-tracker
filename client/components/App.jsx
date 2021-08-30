@@ -12,8 +12,6 @@ import { fetchLifts } from '../actions'
 
 function App ({ dispatch }) {
   const [category, setCategory] = useState('menu') // state for conditionally renderring components
-  // const [date, setDate] = useState(null) // state for displaying lifts by date
-  // const [exercise, setExercise] = useState(null) // state for displaying lifts by exercise
   const [data, setData] = useState(null) // state for displaying correct data in components
 
   const categoryArr = ['chest', 'back', 'legs', 'shoulders']
