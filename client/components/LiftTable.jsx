@@ -1,12 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { deleteLift } from '../actions'
+
 import { displayExercise, refactorDate, categoryArr, getLiftsByCat, lastFive } from '../utils'
 
-const LiftTable = ({ lifts, filter, setCategory, data, setData, category }) => {
+const LiftTable = ({ lifts, filter, setCategory, data, setData, category, dispatch }) => {
   const handleClick = (data, cat) => {
     setCategory(cat)
     setData(data)
+  }
+  const handleDelete = (lift) => {
+    dispatch(deleteLift(lift))
   }
   return (
     <>
@@ -17,6 +22,7 @@ const LiftTable = ({ lifts, filter, setCategory, data, setData, category }) => {
             <th scope='col'>Weight</th>
             <th scope='col'>Reps</th>
             <th scope='col'>Date</th>
+            <th scope='col'>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +34,7 @@ const LiftTable = ({ lifts, filter, setCategory, data, setData, category }) => {
                   <td>{l.weight}</td>
                   <td>{l.reps}</td>
                   <td onClick={() => handleClick(l.date, 'date')} role='button'>{refactorDate(l.date)}</td>
+                  <td role='button' onClick={() => handleDelete(l)}>D</td>
                 </tr>
                 : null
             }))
@@ -39,6 +46,7 @@ const LiftTable = ({ lifts, filter, setCategory, data, setData, category }) => {
                     <td>{l.weight}</td>
                     <td>{l.reps}</td>
                     <td role='button' onClick={() => handleClick(l.date, 'date')}>{refactorDate(l.date)}</td>
+                    <td role='button' onClick={() => handleDelete(l)}>D</td>
                   </tr>
                   : null
               )
