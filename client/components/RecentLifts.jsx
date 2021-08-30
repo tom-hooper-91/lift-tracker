@@ -4,10 +4,14 @@ import { connect } from 'react-redux'
 
 import { displayExercise, lastFive, getLiftsByCat } from '../utils'
 
-const RecentLifts = ({ lifts, category, setCategory, setDate }) => {
-  const handleClick = (date) => {
+const RecentLifts = ({ lifts, category, setCategory, setDate, setExercise }) => {
+  const handleClickDate = (date) => {
     setDate(date)
     setCategory('date')
+  }
+  const handleClickExercise = (exercise) => {
+    setExercise(exercise)
+    setCategory('exercise')
   }
   return (
     <>
@@ -27,10 +31,10 @@ const RecentLifts = ({ lifts, category, setCategory, setDate }) => {
               // try a filter to rule out missing key error
                 return l.weight && l.reps
                   ? <tr key={l.id}>
-                    <th scope='row'>{displayExercise(l.exercise)}</th>
+                    <th scope='row' onClick={() => handleClickExercise(l.exercise)} role='button'>{displayExercise(l.exercise)}</th>
                     <td>{l.weight}</td>
                     <td>{l.reps}</td>
-                    <td onClick={() => handleClick(l.date)} role='button'>{l.date}</td>
+                    <td onClick={() => handleClickDate(l.date)} role='button'>{l.date}</td>
                   </tr>
                   : null
               }))}
