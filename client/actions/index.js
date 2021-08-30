@@ -1,4 +1,4 @@
-import { getLifts, addLift } from '../apis/lifts'
+import { getLifts, addLift, delLift } from '../apis/lifts'
 
 export const SET_LIFTS = 'SET_LIFTS'
 export const ADD_LIFT = 'ADD_LIFT'
@@ -44,6 +44,17 @@ export const addNewLift = (lift) => {
     return addLift(lift)
       .then(() => {
         dispatch(createLift(lift))
+        return null
+      })
+      .catch(err => console.log(err))
+  }
+}
+
+export const deleteLift = (lift) => {
+  return dispatch => {
+    return delLift(lift)
+      .then(() => {
+        dispatch(removeLift(lift))
         return null
       })
       .catch(err => console.log(err))
