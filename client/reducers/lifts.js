@@ -1,4 +1,4 @@
-import { SET_LIFTS, ADD_LIFT } from '../actions'
+import { SET_LIFTS, ADD_LIFT, DEL_LIFT } from '../actions'
 
 const initialState = []
 
@@ -8,6 +8,8 @@ const reducer = (state = initialState, action) => {
       return action.lifts
     case ADD_LIFT:
       return [...state, action.lift]
+    case DEL_LIFT:
+      return state.filter(lift => lift.id !== action.id)
     default:
       return state
   }

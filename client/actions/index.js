@@ -2,6 +2,7 @@ import { getLifts, addLift } from '../apis/lifts'
 
 export const SET_LIFTS = 'SET_LIFTS'
 export const ADD_LIFT = 'ADD_LIFT'
+export const DEL_LIFT = 'DEL_LIFT'
 
 // Action Creators
 
@@ -16,6 +17,13 @@ export const createLift = (lift) => {
   return {
     type: ADD_LIFT,
     lift
+  }
+}
+
+export const removeLift = ({ id }) => {
+  return {
+    type: DEL_LIFT,
+    id
   }
 }
 
