@@ -2,19 +2,20 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import { displayExercise, lastFive, getLiftsByCat, refactorDate } from '../utils'
+// import { displayExercise, lastFive, getLiftsByCat, refactorDate } from '../utils'
+import LiftTable from './LiftTable'
 
 const RecentLifts = ({ lifts, category, setCategory, setData }) => {
-  const handleClick = (data, category) => {
-    setCategory(category)
-    setData(data)
-  }
+  // const handleClick = (data, category) => {
+  //   setCategory(category)
+  //   setData(data)
+  // }
   return (
     <>
       <div className="row">
         <div className="col-12">
           <h4>Recent Lifts</h4>
-          <table className='table table-striped'>
+          {/* <table className='table table-striped'>
             <thead>
               <tr>
                 <th scope='col'>Exercise</th>
@@ -36,7 +37,8 @@ const RecentLifts = ({ lifts, category, setCategory, setData }) => {
                   : null
               }))}
             </tbody>
-          </table>
+          </table> */}
+          <LiftTable category={category} setCategory={setCategory} setData={setData} />
         </div>
       </div>
     </>
