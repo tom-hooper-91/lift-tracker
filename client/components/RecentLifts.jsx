@@ -17,6 +17,7 @@ const RecentLifts = ({ lifts, category, setCategory, setDate, setExercise }) => 
     <>
       <div className="row">
         <div className="col-12">
+          <h4>Recent Lifts</h4>
           <table className='table table-striped'>
             <thead>
               <tr>

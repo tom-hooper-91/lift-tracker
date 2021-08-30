@@ -3,7 +3,15 @@ import { connect } from 'react-redux'
 
 import { displayExercise } from '../utils'
 
-const LiftTable = ({ lifts, filter, data }) => {
+const LiftTable = ({ lifts, filter, setCategory, data, setDate, setExercise }) => {
+  const handleClickDate = (date) => { // clicking on date will render LiftsByDate component and pass in the relevant data
+    setDate(date)
+    setCategory('date')
+  }
+  const handleClickExercise = (exercise) => {
+    setExercise(exercise)
+    setCategory('exercise')
+  }
   return (
     <>
       <table className='table table-striped'>
@@ -20,10 +28,10 @@ const LiftTable = ({ lifts, filter, data }) => {
             return (
               l.weight && l.reps
                 ? <tr key={l.id}>
-                  <th scope='row'>{displayExercise(l.exercise)}</th>
+                  <th scope='row' role='button' onClick={() => handleClickExercise(l.exercise)}>{displayExercise(l.exercise)}</th>
                   <td>{l.weight}</td>
                   <td>{l.reps}</td>
-                  <td>{l.date}</td>
+                  <td role='button' onClick={() => handleClickDate(l.date)}>{l.date}</td>
                 </tr>
                 : null
             )
