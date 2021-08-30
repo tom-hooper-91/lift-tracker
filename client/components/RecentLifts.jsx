@@ -2,16 +2,21 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import { displayExercise, lastFive, getLiftsByCat } from '../utils'
+import { displayExercise, lastFive, getLiftsByCat, refactorDate } from '../utils'
 
-const RecentLifts = ({ lifts, category, setCategory, setDate, setExercise }) => {
-  const handleClickDate = (date) => {
-    setDate(date)
-    setCategory('date')
-  }
-  const handleClickExercise = (exercise) => {
-    setExercise(exercise)
-    setCategory('exercise')
+const RecentLifts = ({ lifts, category, setCategory, setData }) => {
+  // const handleClickDate = (date) => {
+  //   setDate(date)
+  //   setCategory('date')
+  // }
+  // const handleClickExercise = (exercise) => {
+  //   setExercise(exercise)
+  //   setCategory('exercise')
+  // }
+
+  const handleClick = (data, category) => {
+    setCategory(category)
+    setData(data)
   }
   return (
     <>
@@ -32,10 +37,10 @@ const RecentLifts = ({ lifts, category, setCategory, setDate, setExercise }) => 
               // try a filter to rule out missing key error
                 return l.weight && l.reps
                   ? <tr key={l.id}>
-                    <th scope='row' onClick={() => handleClickExercise(l.exercise)} role='button'>{displayExercise(l.exercise)}</th>
+                    <th scope='row' onClick={() => handleClick(l.exercise, 'exercise')} role='button'>{displayExercise(l.exercise)}</th>
                     <td>{l.weight}</td>
                     <td>{l.reps}</td>
-                    <td onClick={() => handleClickDate(l.date)} role='button'>{l.date}</td>
+                    <td onClick={() => handleClick(l.date, 'exercise')} role='button'>{refactorDate(l.date)}</td>
                   </tr>
                   : null
               }))}

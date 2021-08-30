@@ -12,8 +12,9 @@ import { fetchLifts } from '../actions'
 
 function App ({ dispatch }) {
   const [category, setCategory] = useState('menu') // state for conditionally renderring components
-  const [date, setDate] = useState(null) // state for displaying lifts by date
-  const [exercise, setExercise] = useState(null) // state for displaying lifts by exercise
+  // const [date, setDate] = useState(null) // state for displaying lifts by date
+  // const [exercise, setExercise] = useState(null) // state for displaying lifts by exercise
+  const [data, setData] = useState(null) // state for displaying correct data in components
 
   const categoryArr = ['chest', 'back', 'legs', 'shoulders']
 
@@ -30,13 +31,13 @@ function App ({ dispatch }) {
             <Menu setCategory={setCategory}/>
           }
           {categoryArr.includes(category) &&
-            <Category category={category} setCategory={setCategory} setDate={setDate} setExercise={setExercise} />
+            <Category category={category} setCategory={setCategory} setData={setData} />
           }
           {category === 'date' &&
-            <LiftsByDate date={date} setCategory={setCategory} setDate={setDate} setExercise={setExercise} />
+            <LiftsByDate date={data} setCategory={setCategory} setDate={setData} setExercise={setData} />
           }
           {category === 'exercise' &&
-            <LiftsByExercise exercise={exercise} setCategory={setCategory} setDate={setDate} setExercise={setExercise}/>
+            <LiftsByExercise exercise={data} setCategory={setCategory} setDate={setData} setExercise={setData}/>
           }
           <Footer />
         </div>

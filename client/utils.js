@@ -28,6 +28,11 @@ export const createSQLDate = () => {
   return date
 }
 
+export const refactorDate = (date) => {
+  const splitDate = date.split('-')
+  return `${splitDate[2]}-${splitDate[1]}-${splitDate[0]}`
+}
+
 export const displayExercise = (str) => { // convert snake case to displayable string form
   let words = []
   words = str.split('_')

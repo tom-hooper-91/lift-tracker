@@ -8,7 +8,7 @@ import AddExercise from './AddExercise'
 
 import { setHeading } from '../utils'
 
-const Category = ({ category, setCategory, setDate, setExercise }) => {
+const Category = ({ category, setCategory, setData }) => {
   return (
     <>
       <div className="row">
@@ -16,7 +16,7 @@ const Category = ({ category, setCategory, setDate, setExercise }) => {
           <h1>{setHeading(category)}</h1>
         </div>
       </div>
-      <RecentLifts category={category} setCategory={setCategory} setDate={setDate} setExercise={setExercise} />
+      <RecentLifts category={category} setCategory={setCategory} setData={setData} />
       <AddLift category={category} />
       <AddExercise category={category}/>
     </>

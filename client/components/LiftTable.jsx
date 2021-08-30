@@ -1,16 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { displayExercise } from '../utils'
+import { displayExercise, refactorDate } from '../utils'
 
-const LiftTable = ({ lifts, filter, setCategory, data, setDate, setExercise }) => {
-  const handleClickDate = (date) => { // clicking on date will render LiftsByDate component and pass in the relevant data
-    setDate(date)
-    setCategory('date')
-  }
-  const handleClickExercise = (exercise) => {
-    setExercise(exercise)
-    setCategory('exercise')
+const LiftTable = ({ lifts, filter, setCategory, data, setData }) => {
+  // const handleClickDate = (date) => { // clicking on date will render LiftsByDate component and pass in the relevant data
+  //   setDate(date)
+  //   setCategory('date')
+  // }
+  // const handleClickExercise = (exercise) => {
+  //   setExercise(exercise)
+  //   setCategory('exercise')
+  // }
+  const handleClick = (data, category) => {
+    setCategory(category)
+    setData(data)
   }
   return (
     <>
@@ -28,10 +32,10 @@ const LiftTable = ({ lifts, filter, setCategory, data, setDate, setExercise }) =
             return (
               l.weight && l.reps
                 ? <tr key={l.id}>
-                  <th scope='row' role='button' onClick={() => handleClickExercise(l.exercise)}>{displayExercise(l.exercise)}</th>
+                  <th scope='row' role='button' onClick={() => handleClick(l.exercise, 'exercise')}>{displayExercise(l.exercise)}</th>
                   <td>{l.weight}</td>
                   <td>{l.reps}</td>
-                  <td role='button' onClick={() => handleClickDate(l.date)}>{l.date}</td>
+                  <td role='button' onClick={() => handleClick(l.date, 'date')}>{refactorDate(l.date)}</td>
                 </tr>
                 : null
             )
