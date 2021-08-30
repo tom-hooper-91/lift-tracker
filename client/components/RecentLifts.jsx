@@ -5,15 +5,6 @@ import { connect } from 'react-redux'
 import { displayExercise, lastFive, getLiftsByCat, refactorDate } from '../utils'
 
 const RecentLifts = ({ lifts, category, setCategory, setData }) => {
-  // const handleClickDate = (date) => {
-  //   setDate(date)
-  //   setCategory('date')
-  // }
-  // const handleClickExercise = (exercise) => {
-  //   setExercise(exercise)
-  //   setCategory('exercise')
-  // }
-
   const handleClick = (data, category) => {
     setCategory(category)
     setData(data)
@@ -40,7 +31,7 @@ const RecentLifts = ({ lifts, category, setCategory, setData }) => {
                     <th scope='row' onClick={() => handleClick(l.exercise, 'exercise')} role='button'>{displayExercise(l.exercise)}</th>
                     <td>{l.weight}</td>
                     <td>{l.reps}</td>
-                    <td onClick={() => handleClick(l.date, 'exercise')} role='button'>{refactorDate(l.date)}</td>
+                    <td onClick={() => handleClick(l.date, 'date')} role='button'>{refactorDate(l.date)}</td>
                   </tr>
                   : null
               }))}

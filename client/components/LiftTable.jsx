@@ -1,19 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { displayExercise, refactorDate } from '../utils'
+import { displayExercise, refactorDate, categoryArr } from '../utils'
 
-const LiftTable = ({ lifts, filter, setCategory, data, setData }) => {
-  // const handleClickDate = (date) => { // clicking on date will render LiftsByDate component and pass in the relevant data
-  //   setDate(date)
-  //   setCategory('date')
-  // }
-  // const handleClickExercise = (exercise) => {
-  //   setExercise(exercise)
-  //   setCategory('exercise')
-  // }
-  const handleClick = (data, category) => {
-    setCategory(category)
+const LiftTable = ({ lifts, filter, setCategory, data, setData, category }) => {
+  const handleClick = (data, cat) => {
+    setCategory(cat)
     setData(data)
   }
   return (

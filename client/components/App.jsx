@@ -34,10 +34,10 @@ function App ({ dispatch }) {
             <Category category={category} setCategory={setCategory} setData={setData} />
           }
           {category === 'date' &&
-            <LiftsByDate date={data} setCategory={setCategory} setDate={setData} setExercise={setData} />
+            <LiftsByDate data={data} setCategory={setCategory} setData={setData} category={category} />
           }
           {category === 'exercise' &&
-            <LiftsByExercise exercise={data} setCategory={setCategory} setDate={setData} setExercise={setData}/>
+            <LiftsByExercise data={data} setCategory={setCategory} setData={setData} category={category}/>
           }
           <Footer />
         </div>

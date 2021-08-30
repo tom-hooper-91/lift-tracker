@@ -107,3 +107,5 @@ export const sortExercises = (lifts, category, secondary) => { // create new arr
 
   return sortedExercises
 }
+
+export const categoryArr = ['chest', 'back', 'shoulders', 'legs']

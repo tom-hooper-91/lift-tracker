@@ -2,13 +2,15 @@ import React from 'react'
 
 import LiftTable from './LiftTable'
 
-const LiftsByDate = ({ date, setCategory, setData }) => {
+import { refactorDate } from '../utils'
+
+const LiftsByDate = ({ data, setCategory, setData, category }) => {
   return (
     <>
       <div className="row">
         <div className="col-12">
-          <h1>All lifts on {date}</h1>
-          <LiftTable filter ='date' data={date} setCategory={setCategory} setData={setData} />
+          <h1>All lifts on {refactorDate(data)}</h1>
+          <LiftTable filter='date' data={data} setCategory={setCategory} setData={setData} category={category} />
         </div>
       </div>
     </>
