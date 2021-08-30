@@ -15,3 +15,10 @@ export const addLift = (lift) => {
     .then(res => res.body)
     .catch(err => console.log(err))
 }
+
+export const delLift = (lift) => {
+  return request.del(rootUrl + '/lifts/delete')
+    .send(lift)
+    .then(res => res.body)
+    .catch(err => console.log(err))
+}
