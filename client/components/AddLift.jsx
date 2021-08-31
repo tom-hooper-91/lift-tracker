@@ -48,8 +48,8 @@ const AddLift = ({ dispatch, lifts, category }) => {
 
   return (
     <>
-      <h4>Add Lift</h4>
-      <form action='submit' className='row gy-2 gx-3 align-items-center' onSubmit={(e) => handleSubmit(e)}>
+      <h4 className='text-center'>Add Lift</h4>
+      <form action='submit' className='row gy-2 gx-3 text-center' onSubmit={(e) => handleSubmit(e)}>
         <div className="col-3">
           <label htmlFor="autoSizingSelect">Exercise</label>
           <select name='exercise' className="form-select" id="autoSizingSelect" value={formData.exercise} onChange={(e) => handeChange(e)}>
@@ -67,7 +67,7 @@ const AddLift = ({ dispatch, lifts, category }) => {
           <label htmlFor="autoSizingInput">Reps</label>
           <input name='reps' type="number" className="form-control" id="autoSizingInput" value={formData.reps} onChange={(e) => handeChange(e)}/>
         </div>
-        <div className="col-3">
+        <div className="col-1">
           <button type="submit" className="btn btn-dark mt-4">Submit</button>
         </div>
       </form>
