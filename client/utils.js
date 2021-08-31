@@ -14,8 +14,8 @@ export const snakeCase = string => { // convert string to snake case
   return string
 }
 
-export const lastFive = (arr) => { // displays last 5 entries in array
-  return arr.slice(Math.max(arr.length - 5, 1))
+export const displayRecentLifts = (arr) => { // displays last 8 entries in array
+  return arr.slice(Math.max(arr.length - 8, 1))
 }
 
 export const pad = (num) => { return ('00' + num).slice(-2) }

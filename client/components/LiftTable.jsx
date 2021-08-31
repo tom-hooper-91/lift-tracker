@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { deleteLift } from '../actions'
 
-import { displayExercise, refactorDate, categoryArr, getLiftsByCat, lastFive } from '../utils'
+import { displayExercise, refactorDate, categoryArr, getLiftsByCat, displayRecentLifts } from '../utils'
 
 const LiftTable = ({ lifts, filter, setCategory, data, setData, category, dispatch }) => {
   const handleClick = (data, cat) => {
@@ -27,7 +27,7 @@ const LiftTable = ({ lifts, filter, setCategory, data, setData, category, dispat
         </thead>
         <tbody>
           {categoryArr.includes(category) // checks to see if the category is a body part
-            ? lastFive(getLiftsByCat(lifts, category).map(l => { // if category is a body part use ternery to rule out newly added exercises with no info and display most recent 5 lifts
+            ? displayRecentLifts(getLiftsByCat(lifts, category).map(l => { // if category is a body part use ternery to rule out newly added exercises with no info and display most recent 5 lifts
               return l.weight && l.reps
                 ? <tr key={l.id}>
                   <th scope='row' onClick={() => handleClick(l.exercise, 'exercise')} role='button'>{displayExercise(l.exercise)}</th>
