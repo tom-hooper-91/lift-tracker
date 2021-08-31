@@ -23,7 +23,7 @@ function App ({ dispatch }) {
   return (
     <>
       <div className='app'>
-        <div className="container vh-100">
+        <div className="container vh-100 mb-4">
           <Header setCategory={setCategory}/>
           {category === 'menu' &&
             <Menu setCategory={setCategory}/>

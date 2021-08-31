@@ -37,11 +37,11 @@ const AddExercise = ({ category, dispatch }) => {
     <>
       <h4 className='mt-4'>Add Exercise</h4>
       <form action="submit" className='row gy-2 gx-3 align-items-center' onSubmit={(e) => handleSubmit(e)}>
-        <div className="col-auto">
+        <div className="col-4">
           <label htmlFor="autoSizingInput">Exercise</label>
           <input name='exercise' type="text" className='form-control' id='autoSizingInput' placeholder='Exercise' value={formData.exercise} onChange={(e) => handleChange(e)}/>
         </div>
-        <div className="col-auto">
+        <div className="col-4">
           <label htmlFor="autoSizingSelect">Category</label>
           <select name="category" className='form-select' id="autoSizingSelect" value={formData.category} onChange={(e) => handleChange(e)}>
             <option>Choose...</option>
@@ -50,7 +50,7 @@ const AddExercise = ({ category, dispatch }) => {
             {category === 'shoulders' ? <option value='triceps'>Triceps</option> : null}
           </select>
         </div>
-        <div className="col-auto">
+        <div className="col-4">
           <button type='submit' className='btn btn-primary mt-4'>Submit</button>
         </div>
       </form>

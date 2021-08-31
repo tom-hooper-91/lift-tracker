@@ -50,7 +50,7 @@ const AddLift = ({ dispatch, lifts, category }) => {
     <>
       <h4>Add Lift</h4>
       <form action='submit' className='row gy-2 gx-3 align-items-center' onSubmit={(e) => handleSubmit(e)}>
-        <div className="col-auto">
+        <div className="col-3">
           <label htmlFor="autoSizingSelect">Exercise</label>
           <select name='exercise' className="form-select" id="autoSizingSelect" value={formData.exercise} onChange={(e) => handeChange(e)}>
             <option>Choose...</option>
@@ -59,15 +59,15 @@ const AddLift = ({ dispatch, lifts, category }) => {
             })}
           </select>
         </div>
-        <div className="col-auto">
+        <div className="col-3">
           <label htmlFor="autoSizingInput">Weight</label>
           <input name='weight' type="number" className="form-control" id="autoSizingInput" value={formData.weight} onChange={(e) => handeChange(e)}/>
         </div>
-        <div className="col-auto">
+        <div className="col-3">
           <label htmlFor="autoSizingInput">Reps</label>
           <input name='reps' type="number" className="form-control" id="autoSizingInput" value={formData.reps} onChange={(e) => handeChange(e)}/>
         </div>
-        <div className="col-auto">
+        <div className="col-3">
           <button type="submit" className="btn btn-primary mt-4">Submit</button>
         </div>
       </form>
