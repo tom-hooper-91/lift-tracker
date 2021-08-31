@@ -63,6 +63,7 @@ const LiftTable = ({ lifts, filter, setCategory, data, setData, category, dispat
             })}
         </tbody>
       </table>
+      <p>Select the date or exercise to view more</p>
     </>
   )
 }

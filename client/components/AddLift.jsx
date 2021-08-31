@@ -68,7 +68,7 @@ const AddLift = ({ dispatch, lifts, category }) => {
           <input name='reps' type="number" className="form-control" id="autoSizingInput" value={formData.reps} onChange={(e) => handeChange(e)}/>
         </div>
         <div className="col-3">
-          <button type="submit" className="btn btn-primary mt-4">Submit</button>
+          <button type="submit" className="btn btn-dark mt-4">Submit</button>
         </div>
       </form>
     </>

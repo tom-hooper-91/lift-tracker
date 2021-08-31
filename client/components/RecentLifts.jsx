@@ -8,7 +8,7 @@ const RecentLifts = ({ category, setCategory, setData }) => {
       <div className="row">
         <div className="col-12">
           <h4>Recent Lifts</h4>
-          <LiftTable category={category} setCategory={setCategory} setData={setData} />
+          `<LiftTable category={category} setCategory={setCategory} setData={setData} />
         </div>
       </div>
     </>

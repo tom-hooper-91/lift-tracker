@@ -51,7 +51,7 @@ const AddExercise = ({ category, dispatch }) => {
           </select>
         </div>
         <div className="col-4">
-          <button type='submit' className='btn btn-primary mt-4'>Submit</button>
+          <button type='submit' className='btn btn-dark mt-4'>Submit</button>
         </div>
       </form>
     </>
